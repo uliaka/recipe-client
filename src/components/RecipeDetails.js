@@ -9,16 +9,15 @@ import CardContent from '@material-ui/core/CardContent';
 import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import Grid from '@material-ui/core/Grid';
 
-
 class RecipeDetails extends React.Component {
-
   render() {
-      const { recipe } = this.props
+    debugger
+      const { recipe, onEdit } = this.props;
       return (
           <Card>
             <CardHeader
               action={
-              <IconButton aria-label="edit" onClick={action('edit')}>
+              <IconButton aria-label="edit" onClick={onEdit}>
                   <EditIcon />
               </IconButton>
              }
@@ -36,19 +35,11 @@ class RecipeDetails extends React.Component {
             </Grid>
             <Typography paragraph>Ingredients:</Typography>
             <ul>
-               {recipe.ingredients.map(i => (
-                <li>
-                {i}
-                </li>
-                ))}
+               {recipe.ingredients}
               </ul>
              <Typography paragraph>Directions:</Typography>
              <ol>
-               {recipe.description.map(d => (
-                <li>
-                {d}
-                </li>
-                ))}
+               {recipe.description}
               </ol>
             </CardContent>
           </Card>

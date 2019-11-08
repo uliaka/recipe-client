@@ -24,7 +24,6 @@ class RecipeForm extends React.Component {
     const { type, title, prepTime } = values;
     if (!type) {
       errors.type = 'Type is required'
-    
     }
     if (!title) {
       errors.title = 'Title is required'

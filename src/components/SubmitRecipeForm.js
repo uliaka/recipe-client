@@ -37,7 +37,6 @@ class SubmitRecipeForm extends React.Component {
   }
 }
 
-
 SubmitRecipeForm.propTypes = {
   recipe: PropTypes.object,
   request: PropTypes.func,

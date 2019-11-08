@@ -2,26 +2,31 @@ import React from 'react';
 import ResipeItem from './ResipeItem';
 import { connect } from 'react-redux';
 import ACTIONS from '../redux/actions.js';
+import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
-class recipeList extends React.Component {
+class RecipeList extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
     this.props.dispatch(ACTIONS.getRecipes());
   }
-  
+
   render() {
-    console.log('props', this.props)
     const { recipes = [] } = this.props;
     return (
         <div className="App">
             Recipes
           <div className="grid-container">
             {recipes.map(recipe => (
-              <ResipeItem
-                id={recipe.id}
-                title={recipe.title}
-                created={recipe.createdAt}
-              />
+                 <ResipeItem
+                   data={recipe}
+                   key={recipe.id}
+                   />
+
             ))
             }
           </div>
@@ -34,4 +39,4 @@ const mapStateToProps = state => ({
   recipes: state.recipes,
 });
 
-export default connect(mapStateToProps)(recipeList);
+export default connect(mapStateToProps)(RecipeList);
