@@ -1,9 +1,9 @@
 import React from 'react';
-import RecipeDetails from '../src/components/RecipeDetails.js';
+import RecipeForm from '../src/components/RecipeForm.js';
 import { storiesOf } from '@storybook/react';
 
 export default {
-  title: 'Details recipe',
+  title: 'Resipe form',
 };
 
 const recipe = {
@@ -14,7 +14,7 @@ const recipe = {
     prepTime: 90,
     createdAt: "November 8th 2019, 2:42:40 pm"
 } 
+ 
   
-  storiesOf('RecipeDetails', module)
-    .add('recipe', () => <RecipeDetails recipe={recipe} />);
-  
+  storiesOf('RecipeForm', module)
+    .add('recipe', () => <RecipeForm recipe={recipe} onSubmit={(data) => { console.log('data ', data) }}/>);
