@@ -18,6 +18,7 @@ class recipeList extends React.Component {
           <div className="grid-container">
             {recipes.map(recipe => (
               <ResipeItem
+                id={recipe.id}
                 title={recipe.title}
                 created={recipe.createdAt}
               />

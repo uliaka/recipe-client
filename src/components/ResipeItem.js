@@ -1,13 +1,24 @@
 import React from 'react';
+import moment from 'moment'
 
-function Recipe(props) {
-  return (
-    <div onClick={() => props.onClick(props)}
-        className="container-recipe">
-        <h1>{props.title}</h1>
-        <p>{props.created}</p>
-    </div>
-  );
+class Recipe extends React.Component {
+
+  goToDetails(id) {
+    this.props.history.push({
+      path: `/details`,
+      state: id
+    });
+  }
+
+  render() {
+    return (
+      <div onClick={() => this.goToDetails(this.props.id)} 
+          className="container-recipe">
+          <h1>{this.props.title}</h1>
+          <p>{moment(this.props.created).format('MMMM Do YYYY, h:mm:ss a')}</p>
+      </div>
+    );
+  }
 }
 
 

@@ -1,6 +1,7 @@
 const Types = {
     CREATE_RECIPE: "CREATE_RECIPE",
     GET_RECIPES: "GET_RECIPES",
+    GET_RECIPE_BY_ID: "GET_RECIPE_BY_ID",
     DELETE_RECIPE: "DELETE_RECIPE"
   };
   
@@ -38,6 +39,23 @@ const Types = {
         console.log(err)
     })
   }
+    
+  const getRecipeById = (id) => dispatch => {
+    fetch(`http://localhost:3000/recipes/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then(res => { console.log("res", res.data);dispatch({
+      type: Types.GET_RECIPE_BY_ID,
+      payload: res.data,
+    })})
+    .catch(err => {
+        console.log(err)
+    })
+  }
 
   const deleteRecipe = id => ({
     type: Types.DELETE_RECIPE,
@@ -47,6 +65,7 @@ const Types = {
   export default {
     createRecipe,
     getRecipes,
+    getRecipeById,
     deleteRecipe,
     Types
   };
