@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-
 class RecipeForm extends React.Component {
   constructor(props) {
     super(props)
