@@ -21,20 +21,25 @@ class RecipeForm extends React.Component {
 
   validateForm(values)  {
     const errors = {};
-    const { type, title, prepTime } = values;
+    const { type, title, ingredients, description, prepTime } = values;
     if (!type) {
       errors.type = 'Type is required'
     }
     if (!title) {
       errors.title = 'Title is required'
     }
+    if (!ingredients) {
+      errors.ingredients = 'Ingredients is required'
+    }
     if (!prepTime) {
       errors.prepTime = 'Preparation time is required'
+    }
+    if (!description) {
+      errors.description = 'Description is required'
     }
     return errors;
   }
   onFormSubmit(values, { setSubmitting }) {
-    debugger;
     this.props.onSubmit(values)
   }
 
@@ -88,6 +93,10 @@ class RecipeForm extends React.Component {
                     helperText=""
                     defaultValue=""
                     margin="normal"
+                    value={values.ingredients}
+                    onChange={(e) => setFieldValue('ingredients', e.target.value)}
+                    error={errors.ingredients && touched.ingredients}
+                    helperText={errors.ingredients}
                   />
                   <TextField
                     id="standard"
@@ -95,6 +104,10 @@ class RecipeForm extends React.Component {
                     helperText=""
                     defaultValue=""
                     margin="normal"
+                    value={values.description}
+                    onChange={(e) => setFieldValue('description', e.target.value)}
+                    error={errors.description && touched.description}
+                    helperText={errors.description}
                   />
                   <TextField
                     id="standard"

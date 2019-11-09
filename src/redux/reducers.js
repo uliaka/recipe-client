@@ -4,14 +4,13 @@ import actions from "./actions";
 
 const defaultState = {
   recipes: [],
-  recipe: []
 };
 
 const todoReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ACTIONS.Types.CREATE_RECIPE: {
       let newRecipe = action.payload
-      let newState = state.concat([newRecipe])
+      let newState = state.recipes.concat([newRecipe])
       return newState;
     }
 

@@ -11,10 +11,8 @@ function RecipeDetailsPage (props) {
   if (!Object.keys(recipe).length) {
     dispatch(ACTIONS.getRecipes());
   }
-
   const onEdit = () => props.history.push(`/recipe/edit/${recipe.id}`, { recipe })
   const goBack = () => props.history.go(-1)
-  
   return (
     <>
       <button onClick={goBack}>go back</button>

@@ -14,10 +14,11 @@ class RecipeList extends React.Component {
   componentDidMount() {
     this.props.dispatch(ACTIONS.getRecipes());
   }
-
   render() {
     const { recipes = [] } = this.props;
     return (
+      <>
+       <button><Link to='/recipe/create'>add recipe</Link></button>
         <div className="App">
             Recipes
           <div className="grid-container">
@@ -31,6 +32,7 @@ class RecipeList extends React.Component {
             }
           </div>
         </div>
+        </>
     )
   }
 }

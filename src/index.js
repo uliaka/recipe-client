@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import RecipeDetailsPage from './pages/RecipeDetailsPage.js'
-import EditRecipePage from './pages/EditRecipePage.js'
+import RecipeDetailsPage from './pages/RecipeDetailsPage.js';
+import EditRecipePage from './pages/EditRecipePage.js';
+import AddRecipePage from './pages/AddRecipePage.js';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from './redux/store.js';
@@ -18,6 +19,7 @@ function RouterComponent() {
         <Route exact path="/" component={App} />
         <Route exact path="/recipe/details/:id" component={RecipeDetailsPage} />
         <Route exact path="/recipe/edit/:id" component={EditRecipePage} />
+        <Route exact path="/recipe/create" component={AddRecipePage} />
       </Switch>
     </Router>
     </Provider>
