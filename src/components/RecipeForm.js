@@ -34,6 +34,7 @@ class RecipeForm extends React.Component {
     return errors;
   }
   onFormSubmit(values, { setSubmitting }) {
+    debugger;
     this.props.onSubmit(values)
   }
 

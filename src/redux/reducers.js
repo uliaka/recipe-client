@@ -1,5 +1,6 @@
 import ACTIONS from "./actions";
 import _ from "lodash";
+import actions from "./actions";
 
 const defaultState = {
   recipes: [],
@@ -9,11 +10,8 @@ const defaultState = {
 const todoReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ACTIONS.Types.CREATE_RECIPE: {
-      console.log(action);
       let newRecipe = action.payload
       let newState = state.concat([newRecipe])
-      //let newState = _.cloneDeep(state);
-     // newState.recipes.push(newRecipe);
       return newState;
     }
 
@@ -23,10 +21,15 @@ const todoReducer = (state = defaultState, action) => {
         recipes: action.payload
       }
     }
-    
 
+    case ACTIONS.Types.UPDATE_RECIPE: { 
+      return {
+        ...state,
+        recipes: state.recipes.map(recipe => recipe.id === action.payload.id ? action.payload : recipe),
+      }
+    }
+    
     case ACTIONS.Types.GET_RECIPE_BY_ID: {
-      console.log("action.payload", action.payload)
       return {
       recipe: action.payload
       }

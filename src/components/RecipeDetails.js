@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 
 class RecipeDetails extends React.Component {
   render() {
-    debugger
       const { recipe, onEdit } = this.props;
       return (
           <Card>
