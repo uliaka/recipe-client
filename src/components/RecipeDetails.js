@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import Card from '@material-ui/core/Card';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,15 +12,20 @@ import Grid from '@material-ui/core/Grid';
 
 class RecipeDetails extends React.Component {
   render() {
-      const { recipe, onEdit } = this.props;
+      const { recipe, onEdit, onDelete } = this.props;
       return (
           <Card>
             <CardHeader
-              action={
-              <IconButton aria-label="edit" onClick={onEdit}>
+            action={
+              <>
+                <IconButton aria-label="edit" onClick={onEdit}>
                   <EditIcon />
-              </IconButton>
-             }
+                </IconButton>
+                <IconButton aria-label="delete" onClick={onDelete}>
+                  <DeleteIcon />
+                </IconButton>
+              </>
+            }
              title={recipe.title}
              subheader={recipe.createdAt}         
            />

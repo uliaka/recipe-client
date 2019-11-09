@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import types from '../redux/types'
 
 function AddRecipePage(props) {
-  const dispatch = useDispatch()  ;     
+  const dispatch = useDispatch();     
   const goBack = () => props.history.goBack()
   const addRecipe = (recipe) => {
     return fetch(`http://localhost:3000/recipes/`, {
@@ -17,7 +17,6 @@ function AddRecipePage(props) {
   }
 //add recipe action
 const onSuccess = (recipe) => {
-  console.log(types)
   dispatch({ type: types.CREATE_RECIPE, payload: recipe })
   props.history.go(-1);
 }
