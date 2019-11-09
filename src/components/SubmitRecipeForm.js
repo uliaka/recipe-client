@@ -5,23 +5,22 @@ import PropTypes from 'prop-types';
 class SubmitRecipeForm extends React.Component {
   constructor(props) {
     super(props)
-    this.onSubmit = this.onSubmit.bind(this) 
+    this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-        isSubmitting: false,
-        error: null,
-        success: null,
+      isSubmitting: false,
+      error: null,
+      success: null,
     }
   }
 
   onSubmit(values) {
-    console.log('values', values)
     const { onSuccess, request } = this.props;
     this.setState({ isSubmitting: true, error: null, success: null })
     request(values).then((response) => {
       this.setState({ success: response.message, error: null, isSubmitting: false })
       onSuccess(values)
     }).catch(error => {
-        this.setState({ error: error.message, success: null, isSubmitting: false })
+      this.setState({ error: error.message, success: null, isSubmitting: false })
     })
   }
 
@@ -43,5 +42,5 @@ SubmitRecipeForm.propTypes = {
   request: PropTypes.func,
   onSuccess: PropTypes.func,
 }
-  
+
 export default SubmitRecipeForm;

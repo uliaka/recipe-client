@@ -1,44 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ResipeItem from './ResipeItem';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ACTIONS from '../redux/actions.js';
 import { Link } from "react-router-dom";
-import { withRouter } from 'react-router-dom';
 
-class RecipeList extends React.Component {
-
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    this.props.dispatch(ACTIONS.getRecipes());
-  }
-  render() {
-    const { recipes = [] } = this.props;
-    return (
-      <>
-       <button><Link to='/recipe/create'>add recipe</Link></button>
-        <div className="App">
-            Recipes
-          <div className="grid-container">
-            {recipes.map(recipe => (
-                 <ResipeItem
-                   data={recipe}
-                   key={recipe.id}
-                   />
-
-            ))
-            }
-          </div>
+const RecipeList = (props) => {
+  const dispatch = useDispatch();
+  const recipes = useSelector(state => state.recipes);
+  useEffect(() => {
+    dispatch(ACTIONS.getRecipes());
+  }, [])
+  return (
+    <>
+      <button><Link to='/recipe/create'>add recipe</Link></button>
+      <div className="App">
+        Recipes
+        <div className="grid-container">
+          {recipes.map(recipe => (
+            <ResipeItem
+              data={recipe}
+              key={recipe.id}
+            />
+          ))}
         </div>
-        </>
-    )
-  }
+      </div>
+    </>
+  )
 }
 
-const mapStateToProps = state => ({
-  recipes: state.recipes,
-});
-
-export default connect(mapStateToProps)(RecipeList);
+export default RecipeList;

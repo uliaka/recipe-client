@@ -2,23 +2,18 @@ import React from 'react';
 import moment from 'moment'
 import { withRouter } from 'react-router-dom';
 
-class Recipe extends React.Component {
-   
-  goToRoute(id) {
-    this.props.history.push(`recipe/details/${id}`, { id });
+const Recipe = (props) => {
+  const goToRoute = (id) => {
+    props.history.push(`recipe/details/${id}`, { id });
   }
-
-  render() {
-    const { title, created } = this.props.data;
-    return (
-      <div style={{border: '1px solid black', cursor: 'pointer'}}
-         onClick={(e) => this.goToRoute(this.props.data.id)}  
-          className="container-recipe">
-          <h1>{title}</h1>
-          <p>{moment(created).format('MMMM Do YYYY, h:mm:ss a')}</p>
-      </div>
-    );
-  }
+  return (
+    <div style={{ border: '1px solid black', cursor: 'pointer' }}
+      onClick={() => goToRoute(props.data.id)}
+      className="container-recipe">
+      <h1>{props.data.title}</h1>
+      <p>{moment(props.data.created).format('MMMM Do YYYY, h:mm:ss a')}</p>
+    </div>
+  );
 }
 
 export default withRouter(Recipe);
