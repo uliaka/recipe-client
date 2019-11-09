@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RecipeDetails from '../components/RecipeDetails'
 import { useSelector, useDispatch } from 'react-redux'
 import ACTIONS from '../redux/actions';
-import Types from '../redux/types'
+import Types from '../redux/types';
+import AlertDialog from '../components/AlertDialog';
 
 function RecipeDetailsPage (props) {
   const dispatch = useDispatch()
@@ -14,6 +15,13 @@ function RecipeDetailsPage (props) {
   }
   const onEdit = () => props.history.push(`/recipe/edit/${recipe.id}`, { recipe })
   const goBack = () => props.history.go(-1) 
+  
+
+  const [showModal, setSHowModal] = useState(false);
+  const handleModalOpen = () => setSHowModal(true);
+  const handleModalClose = () => setSHowModal(false);
+
+  
   const onDelete = (recipeId) => {
     return fetch(`http://localhost:3000/recipes/${recipeId}`, {
       method: 'DELETE',
@@ -31,14 +39,25 @@ function RecipeDetailsPage (props) {
     .catch(err => {
         console.log(err)
     })
+  
   }
+
   return (
     <>
+      {showModal &&
+        <AlertDialog
+          onCancel={handleModalClose}
+          onConfirm={() => onDelete(recipeId)}
+          confirmText="delete"
+          cancelText="cancel"
+          message="Are you sure to delete this recipe?"
+          />
+      }
       <button onClick={goBack}>go back</button>
       <RecipeDetails
         recipe={recipe}
         onEdit={onEdit}
-        onDelete={() => onDelete(recipeId)}
+        onDelete={handleModalOpen}
       />
     </>
   )
