@@ -4,42 +4,41 @@ import { useSelector, useDispatch } from 'react-redux'
 import ACTIONS from '../redux/actions';
 import Types from '../redux/types';
 import AlertDialog from '../components/AlertDialog';
+import { apiUrl } from '../config/index.js'
 
-function RecipeDetailsPage (props) {
+function RecipeDetailsPage(props) {
   const dispatch = useDispatch()
   const recipeId = parseInt(props.history.location.pathname.split('/').pop())
-  const recipe = useSelector(state => state.recipes && state.recipes.find(r => r.id === recipeId)) || {}  
-  
+  const recipe = useSelector(state => state.recipes && state.recipes.find(r => r.id === recipeId)) || {}
+
   if (!Object.keys(recipe).length) {
     dispatch(ACTIONS.getRecipes());
   }
   const onEdit = () => props.history.push(`/recipe/edit/${recipe.id}`, { recipe })
-  const goBack = () => props.history.go(-1) 
-  
+  const goBack = () => props.history.go(-1)
 
   const [showModal, setSHowModal] = useState(false);
   const handleModalOpen = () => setSHowModal(true);
   const handleModalClose = () => setSHowModal(false);
 
-  
   const onDelete = (recipeId) => {
-    return fetch(`http://localhost:3000/recipes/${recipeId}`, {
+    return fetch(`${apiUrl}${recipeId}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
       }
     })
-    .then(res => { 
-      dispatch({
-        type: Types.DELETE_RECIPE,
-        payload: recipeId
+      .then(res => {
+        dispatch({
+          type: Types.DELETE_RECIPE,
+          payload: recipeId
+        })
+        props.history.go(-1);
       })
-      props.history.go(-1); 
-    })
-    .catch(err => {
+      .catch(err => {
         console.log(err)
-    })
-  
+      })
+
   }
 
   return (
@@ -51,7 +50,7 @@ function RecipeDetailsPage (props) {
           confirmText="delete"
           cancelText="cancel"
           message="Are you sure to delete this recipe?"
-          />
+        />
       }
       <button onClick={goBack}>go back</button>
       <RecipeDetails

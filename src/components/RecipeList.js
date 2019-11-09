@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const RecipeList = (props) => {
   const dispatch = useDispatch();
-  const recipes = useSelector(state => state.recipes);
+  const recipes = useSelector(state => state.recipes) || [];
   useEffect(() => {
     dispatch(ACTIONS.getRecipes());
   }, [])
