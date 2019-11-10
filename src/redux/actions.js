@@ -8,14 +8,14 @@ const createRecipe = recipe => dispatch => {
       'Content-type': 'multipart/form-data'
     },
   })
-  .then(res => res.send(recipe).status(200))
-  .then(res => dispatch({
-    type: Types.CREATE_RECIPE,
-    payload: recipe
-  }))
-  .catch(err => {
+    .then(res => res.send(recipe).status(200))
+    .then(res => dispatch({
+      type: Types.CREATE_RECIPE,
+      payload: recipe
+    }))
+    .catch(err => {
       console.log(err);
-  });
+    });
 };
 
 const getRecipes = () => dispatch => {
@@ -25,18 +25,18 @@ const getRecipes = () => dispatch => {
       'Content-type': 'application/json'
     },
   })
-  .then(res => res.json())
-  .then(res =>{ 
-    const data = res.data.sort(function(a, b) {
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
-   dispatch({
-    type: Types.GET_RECIPES,
-    payload: data,
-  });})
-  .catch(err => {
+    .then(res => res.json())
+    .then(res =>{ 
+      const data = res.data.sort(function(a, b) {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      dispatch({
+        type: Types.GET_RECIPES,
+        payload: data,
+      });})
+    .catch(err => {
       console.log(err);
-  });
+    });
 };
   
 const getRecipeById = (id) => dispatch => {
@@ -46,14 +46,14 @@ const getRecipeById = (id) => dispatch => {
       'Content-type': 'application/json'
     },
   })
-  .then(res => res.json())
-  .then(res => { console.log("res", res.data);dispatch({
-    type: Types.GET_RECIPE_BY_ID,
-    payload: res.data,
-  });})
-  .catch(err => {
+    .then(res => res.json())
+    .then(res => { console.log("res", res.data);dispatch({
+      type: Types.GET_RECIPE_BY_ID,
+      payload: res.data,
+    });})
+    .catch(err => {
       console.log(err);
-  });
+    });
 };
 
 const deleteRecipe = id => ({

@@ -59,79 +59,79 @@ const RecipeForm = (props) => {
               setFieldValue,
               isSubmitting,
             }) => (
-                <form onSubmit={handleSubmit}>
-                  <TextField
-                    fullWidth
-                    id="standard"
-                    label="Title"
-                    defaultValue=""
-                    margin="normal"
-                    value={values.title}
-                    onChange={(e) => setFieldValue('title', e.target.value)}
-                    error={errors.title && touched.title}
-                    helperText={errors.title || ''}
-                  />
-                  <Grid item xs={12} container direction="row" spacing={1}>
-                    <Grid item xs={8}>
-                      <TextField
-                        id="standard"
-                        label="Type"
-                        defaultValue=""
-                        margin="normal"
-                        value={values.type}
-                        onChange={(e) => setFieldValue('type', e.target.value)}
-                        error={errors.type && touched.type}
-                        helperText={errors.type || ''}
-                      />
-                    </Grid>
-                    <Grid item xs={4}>
-                      <TextField
-                        id="standard"
-                        label="PrepTime"
-                        defaultValue=""
-                        margin="normal"
-                        value={values.prepTime}
-                        onChange={(e) => setFieldValue('prepTime', e.target.value)}
-                        error={errors.prepTime && touched.prepTime}
-                        helperText={errors.prepTime || ''}
-                      />
-                    </Grid>
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  fullWidth
+                  id="standard"
+                  label="Title"
+                  defaultValue=""
+                  margin="normal"
+                  value={values.title}
+                  onChange={(e) => setFieldValue('title', e.target.value)}
+                  error={errors.title && touched.title}
+                  helperText={errors.title || ''}
+                />
+                <Grid item xs={12} container direction="row" spacing={1}>
+                  <Grid item xs={8}>
+                    <TextField
+                      id="standard"
+                      label="Type"
+                      defaultValue=""
+                      margin="normal"
+                      value={values.type}
+                      onChange={(e) => setFieldValue('type', e.target.value)}
+                      error={errors.type && touched.type}
+                      helperText={errors.type || ''}
+                    />
                   </Grid>
-                  <TextField
-                    fullWidth
-                    id="standard"
-                    label="Ingredients"
-                    defaultValue=""
-                    margin="normal"
-                    value={values.ingredients}
-                    onChange={(e) => setFieldValue('ingredients', e.target.value)}
-                    error={errors.ingredients && touched.ingredients}
-                    helperText={errors.ingredients || ''}
-                  />
-                  <TextField
-                    fullWidth
-                    id="standard"
-                    label="Description"
-                    defaultValue=""
-                    margin="normal"
-                    value={values.description}
-                    onChange={(e) => setFieldValue('description', e.target.value)}
-                    error={errors.description && touched.description}
-                    helperText={errors.description || ''}
-                  />
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    className={classes.button}
-                    startIcon={<SaveIcon />}
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
+                  <Grid item xs={4}>
+                    <TextField
+                      id="standard"
+                      label="PrepTime"
+                      defaultValue=""
+                      margin="normal"
+                      value={values.prepTime}
+                      onChange={(e) => setFieldValue('prepTime', e.target.value)}
+                      error={errors.prepTime && touched.prepTime}
+                      helperText={errors.prepTime || ''}
+                    />
+                  </Grid>
+                </Grid>
+                <TextField
+                  fullWidth
+                  id="standard"
+                  label="Ingredients"
+                  defaultValue=""
+                  margin="normal"
+                  value={values.ingredients}
+                  onChange={(e) => setFieldValue('ingredients', e.target.value)}
+                  error={errors.ingredients && touched.ingredients}
+                  helperText={errors.ingredients || ''}
+                />
+                <TextField
+                  fullWidth
+                  id="standard"
+                  label="Description"
+                  defaultValue=""
+                  margin="normal"
+                  value={values.description}
+                  onChange={(e) => setFieldValue('description', e.target.value)}
+                  error={errors.description && touched.description}
+                  helperText={errors.description || ''}
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  className={classes.button}
+                  startIcon={<SaveIcon />}
+                  type="submit"
+                  disabled={isSubmitting}
+                >
                     Save recipe
-                  </Button>
-                </form>
-              )}
+                </Button>
+              </form>
+            )}
           </Formik>
         </CardContent>
       </Card>

@@ -52,15 +52,15 @@ const Recipe = (props) => {
       alignItems="center"
       justify="center"
     >
-    <Card onClick={() => goToRoute(props.data.id)} style={recipeItemStyles.cardStyle}>
-      <CardHeader
-        style={recipeItemStyles.cardHeaderStyle}
-        title={cardTitle}
-        subheader={subheader}
-      />
-      <CardContent>
-        <Typography paragraph><b>Description: </b>{props.data.title}</Typography>
-      </CardContent>
+      <Card onClick={() => goToRoute(props.data.id)} style={recipeItemStyles.cardStyle}>
+        <CardHeader
+          style={recipeItemStyles.cardHeaderStyle}
+          title={cardTitle}
+          subheader={subheader}
+        />
+        <CardContent>
+          <Typography paragraph><b>Description: </b>{props.data.title}</Typography>
+        </CardContent>
       </Card>
     </Grid>
   );

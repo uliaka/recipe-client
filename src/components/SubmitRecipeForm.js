@@ -25,9 +25,9 @@ class SubmitRecipeForm extends React.Component {
         }
         this.setState({ success: response.message, error: null, isSubmitting: false });
         onSuccess(values);
-    }).catch(error => {
-      this.setState({ error: error.message, success: null, isSubmitting: false });
-    });
+      }).catch(error => {
+        this.setState({ error: error.message, success: null, isSubmitting: false });
+      });
   }
   render() {
     const { isSubmitting, error, success } = this.state;

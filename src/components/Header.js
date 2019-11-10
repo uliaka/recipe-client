@@ -23,10 +23,10 @@ export default function ButtonAppBar() {
       <AppBar position="static" style={{backgroundColor: styles.blue }}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-             <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
                Recipes
-             </Link>
-             <Link to='/recipe/create' style={{ textDecoration: 'none', color: 'white', position: 'absolute', right: 10 }}>
+            </Link>
+            <Link to='/recipe/create' style={{ textDecoration: 'none', color: 'white', position: 'absolute', right: 10 }}>
               <PostAddTwoToneIcon fontSize='large'/>
             </Link>
           </Typography>
