@@ -17,7 +17,6 @@ function AddRecipePage(props) {
       }
     });
   };
-  //add recipe action
   const onSuccess = (recipe) => {
     dispatch({ type: types.CREATE_RECIPE, payload: recipe });
     props.history.push('/');
