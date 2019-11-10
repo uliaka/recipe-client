@@ -8,13 +8,13 @@ export default {
 
 const request = () => new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve({ message: 'updated!' })
-  }, 400)
-})
+    resolve({ message: 'updated!' });
+  }, 400);
+});
 
 const onSuccess = () => {
   console.log('redirecting...')
-}
+};
   
-  storiesOf('SubmitRecipeForm', module)
-    .add('recipe', () => <SubmitRecipeForm onSuccess={onSuccess} request={request} recipe={recipe} />);
+storiesOf('SubmitRecipeForm', module)
+  .add('recipe', () => <SubmitRecipeForm onSuccess={onSuccess} request={request} recipe={recipe} />);

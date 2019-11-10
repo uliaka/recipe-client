@@ -19,9 +19,8 @@ function EditRecipePage(props) {
       }
     });
   };
-  //update recipe action
+
   const onSuccess = (recipe) => {
-    console.log(types);
     dispatch({ type: types.UPDATE_RECIPE, payload: recipe });
     props.history.go(-1);
   };

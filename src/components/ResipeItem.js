@@ -14,9 +14,13 @@ const recipeItemStyles = {
     width: '50%',
     cursor: 'pointer',
     textAlign: 'left',
+    transition: '0.3s',
+    "&:hover": {
+      boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
+    }
   },
   cardHeaderStyle: {
-    backgroundColor: styles.blue,
+    backgroundColor: styles.blueLite,
     color: 'white',
   },
   cardTitle: {
@@ -59,7 +63,7 @@ const Recipe = (props) => {
           subheader={subheader}
         />
         <CardContent>
-          <Typography paragraph><b>Description: </b>{props.data.title}</Typography>
+          <Typography paragraph><b>Description: </b>{props.data.directions}</Typography>
         </CardContent>
       </Card>
     </Grid>

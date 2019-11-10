@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import styles from '../styles/index';
 
 const AlertDialog = (props) => (
   <>
@@ -13,10 +14,10 @@ const AlertDialog = (props) => (
     >
       <DialogTitle id="alert-dialog-title">{props.message}</DialogTitle>
       <DialogActions>
-        <Button onClick={props.onCancel} color="primary">
+        <Button onClick={props.onCancel} color={styles.blue}>
           {props.cancelText}
         </Button>
-        <Button onClick={props.onConfirm} color="primary" autoFocus>
+        <Button onClick={props.onConfirm} color={styles.blue} autoFocus>
           {props.confirmText}
         </Button>
       </DialogActions>

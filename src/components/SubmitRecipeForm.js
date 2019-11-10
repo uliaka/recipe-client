@@ -2,6 +2,23 @@ import React from 'react';
 import RecipeForm from './RecipeForm.js';
 import PropTypes from 'prop-types';
 
+
+const styles = {
+  errorBlock: {
+    textAlign: 'center',
+    color: 'red',
+  },
+  successBlock: {
+    textAlign: 'center',
+    color: 'green',
+  },
+  submittingBlock: {
+    textAlign: 'center',
+    color: 'black',
+  }
+}
+
+
 class SubmitRecipeForm extends React.Component {
   constructor(props) {
     super(props);
@@ -33,9 +50,9 @@ class SubmitRecipeForm extends React.Component {
     const { isSubmitting, error, success } = this.state;
     return (
       <>
-        {isSubmitting && 'submitting...'}
-        {error && error}
-        {success && success}
+        {isSubmitting && <div style={styles.submittingBlock}>submitting...</div>}
+        {error && <div style={styles.errorBlock}>{error}</div>}
+        {success && <div style={styles.successBlock}>{success}</div>}
         <RecipeForm onSubmit={this.onSubmit} recipe={this.props.recipe} />
       </>
     );

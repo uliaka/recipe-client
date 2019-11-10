@@ -26,7 +26,7 @@ export default function ButtonAppBar() {
             <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
                Recipes
             </Link>
-            <Link to='/recipe/create' style={{ textDecoration: 'none', color: 'white', position: 'absolute', right: 10 }}>
+            <Link to='/recipe/create' style={{ textDecoration: 'none', color: 'white', position: 'absolute', right: 20 }}>
               <PostAddTwoToneIcon fontSize='large'/>
             </Link>
           </Typography>

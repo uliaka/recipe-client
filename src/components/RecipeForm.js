@@ -7,11 +7,12 @@ import TextField from '@material-ui/core/TextField';
 import { Formik } from 'formik';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
+import styles from '../styles/index';
 
 const RecipeForm = (props) => {
   const validateForm = (values) => {
     const errors = {};
-    const { type, title, ingredients, description, prepTime } = values;
+    const { type, title, ingredients, description, directions, prepTime } = values;
     if (!type) {
       errors.type = 'Type is required';
     }
@@ -28,6 +29,9 @@ const RecipeForm = (props) => {
     }
     if (!description) {
       errors.description = 'Description is required';
+    }
+    if (!directions) {
+      errors.directions = 'Directions is required';
     }
     return errors;
   };
@@ -100,6 +104,17 @@ const RecipeForm = (props) => {
                 <TextField
                   fullWidth
                   id="standard"
+                  label="Directions"
+                  defaultValue=""
+                  margin="normal"
+                  value={values.directions}
+                  onChange={(e) => setFieldValue('directions', e.target.value)}
+                  error={errors.description && touched.directions}
+                  helperText={errors.directions || ''}
+                />
+                <TextField
+                  fullWidth
+                  id="standard"
                   label="Ingredients"
                   defaultValue=""
                   margin="normal"
@@ -121,7 +136,7 @@ const RecipeForm = (props) => {
                 />
                 <Button
                   variant="contained"
-                  color="primary"
+                  color={styles.blue}
                   size="small"
                   className={classes.button}
                   startIcon={<SaveIcon />}

@@ -1,3 +1,4 @@
 module.exports = {
-  blue: '#3f51b5',
+  blue: '#6C8BA3',
+  blueLite: '#9BB0C0'
 };
