@@ -63,7 +63,7 @@ const Recipe = (props) => {
           subheader={subheader}
         />
         <CardContent>
-          <Typography paragraph><b>Description: </b>{props.data.directions}</Typography>
+          <Typography paragraph><b>Description: </b>{props.data.description}</Typography>
         </CardContent>
       </Card>
     </Grid>
