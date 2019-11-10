@@ -35,29 +35,29 @@ const RecipeForm = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Formik
-          initialValues={props.recipe}
-          validate={values => validateForm(values)}
-          onSubmit={values => onFormSubmit(values)}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleSubmit,
-            setFieldValue,
-            isSubmitting,
-          }) => (
-              <form onSubmit={handleSubmit}>
-                <Grid
-                  container
-                  direction="column"
-                  justify="center"
-                  alignItems="center"
-                  spacing={6}
-                >
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+    >
+      <Card className={classes.card}>
+        <CardContent>
+          <Formik
+            initialValues={props.recipe}
+            validate={values => validateForm(values)}
+            onSubmit={values => onFormSubmit(values)}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleSubmit,
+              setFieldValue,
+              isSubmitting,
+            }) => (
+                <form onSubmit={handleSubmit}>
                   <TextField
                     fullWidth
                     id="standard"
@@ -69,7 +69,7 @@ const RecipeForm = (props) => {
                     error={errors.title && touched.title}
                     helperText={errors.title || ''}
                   />
-                  <Grid item xs={12} container direction="row" spacing={2}>
+                  <Grid item xs={12} container direction="row" spacing={1}>
                     <Grid item xs={8}>
                       <TextField
                         id="standard"
@@ -123,32 +123,28 @@ const RecipeForm = (props) => {
                     size="small"
                     className={classes.button}
                     startIcon={<SaveIcon />}
-                    type="submit" 
+                    type="submit"
                     disabled={isSubmitting}
                   >
                     Save recipe
                   </Button>
-                </Grid>
-              </form>
-            )}
-        </Formik>
-      </CardContent>
-    </Card>
+                </form>
+              )}
+          </Formik>
+        </CardContent>
+      </Card>
+    </Grid>
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   card: {
     maxWidth: 400,
     padding: 30
   },
-  form: {
-    width: "100%"
-  },
   button: {
-    margin: theme.spacing(2),
-
+    marginTop: 20,
   },
-}))
+});
 
 export default RecipeForm;

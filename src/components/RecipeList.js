@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import ResipeItem from './ResipeItem';
 import { useDispatch, useSelector } from 'react-redux';
 import ACTIONS from '../redux/actions.js';
-import { Link } from "react-router-dom";
 
 const RecipeList = (props) => {
   const dispatch = useDispatch();
@@ -12,10 +11,9 @@ const RecipeList = (props) => {
   }, [])
   return (
     <>
-      <button><Link to='/recipe/create'>add recipe</Link></button>
-      <div className="App">
-        Recipes
-        <div className="grid-container">
+      <div>
+        <h1>My recipes</h1>
+        <div>
           {recipes.map(recipe => (
             <ResipeItem
               data={recipe}

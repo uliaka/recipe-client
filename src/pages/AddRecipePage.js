@@ -1,10 +1,12 @@
 import React from 'react';
-import SubmitRecipeForm from '../components/SubmitRecipeForm'
-import { useDispatch } from 'react-redux'
-import types from '../redux/types'
+import SubmitRecipeForm from '../components/SubmitRecipeForm';
+import { useDispatch } from 'react-redux';
+import types from '../redux/types';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton';
 
 function AddRecipePage(props) {
-  const dispatch = useDispatch();     
+  const dispatch = useDispatch();
   const goBack = () => props.history.goBack()
   const addRecipe = (recipe) => {
     return fetch(`http://localhost:3000/recipes/`, {
@@ -15,14 +17,16 @@ function AddRecipePage(props) {
       }
     })
   }
-//add recipe action
-const onSuccess = (recipe) => {
-  dispatch({ type: types.CREATE_RECIPE, payload: recipe })
-  props.history.go(-1);
-}
-return (
+  //add recipe action
+  const onSuccess = (recipe) => {
+    dispatch({ type: types.CREATE_RECIPE, payload: recipe })
+    props.history.go(-1);
+  }
+  return (
     <>
-      <button onClick={goBack}>go back</button>
+      <IconButton aria-label="goBack" onClick={goBack}>
+        <ArrowBackIcon />
+      </IconButton>
       <SubmitRecipeForm
         recipe={{}}
         request={(data) => addRecipe(data)}

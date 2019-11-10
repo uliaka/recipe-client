@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import ACTIONS from '../redux/actions';
 import Types from '../redux/types';
 import AlertDialog from '../components/AlertDialog';
-import { apiUrl } from '../config/index.js'
+import { apiUrl } from '../config/index.js';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton';
 
 function RecipeDetailsPage(props) {
   const dispatch = useDispatch()
@@ -52,7 +54,9 @@ function RecipeDetailsPage(props) {
           message="Are you sure to delete this recipe?"
         />
       }
-      <button onClick={goBack}>go back</button>
+      <IconButton aria-label="goBack" onClick={goBack}>
+        <ArrowBackIcon />
+      </IconButton>
       <RecipeDetails
         recipe={recipe}
         onEdit={onEdit}

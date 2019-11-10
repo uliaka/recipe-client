@@ -9,19 +9,20 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from './redux/store.js';
 import { Provider } from 'react-redux';
-
+import Header from './components/Header.js';
 
 function RouterComponent() {
   return (
     <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/recipe/details/:id" component={RecipeDetailsPage} />
-        <Route exact path="/recipe/edit/:id" component={EditRecipePage} />
-        <Route exact path="/recipe/create" component={AddRecipePage} />
-      </Switch>
-    </Router>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route exact path="/recipe/details/:id" component={RecipeDetailsPage} />
+          <Route exact path="/recipe/edit/:id" component={EditRecipePage} />
+          <Route exact path="/recipe/create" component={AddRecipePage} />
+        </Switch>
+      </Router>
     </Provider>
   );
 }
