@@ -26,10 +26,14 @@ const getRecipes = () => dispatch => {
     },
   })
   .then(res => res.json())
-  .then(res => dispatch({
+  .then(res =>{ 
+    const data = res.data.sort(function(a, b) {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+   dispatch({
     type: Types.GET_RECIPES,
-    payload: res.data,
-  }))
+    payload: data,
+  })})
   .catch(err => {
       console.log(err)
   })

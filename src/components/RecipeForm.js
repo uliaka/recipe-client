@@ -23,6 +23,8 @@ const RecipeForm = (props) => {
     }
     if (!prepTime) {
       errors.prepTime = 'Preparation time is required'
+    } else if (!/^[0-9]{1,}$/i.test(prepTime)) {
+      errors.prepTime = 'Preparation time should be number';
     }
     if (!description) {
       errors.description = 'Description is required'
