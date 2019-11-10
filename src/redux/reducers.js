@@ -1,6 +1,4 @@
 import ACTIONS from "./actions";
-import _ from "lodash";
-import actions from "./actions";
 
 const defaultState = {
   recipes: [],
@@ -9,9 +7,10 @@ const defaultState = {
 const todoReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ACTIONS.Types.CREATE_RECIPE: {
-      let newRecipe = action.payload
-      let newState = state.recipes.concat([newRecipe])
-      return newState;
+      return {
+        ...state,
+        recipes: state.recipes.concat([action.payload])
+      };
     }
 
     case ACTIONS.Types.GET_RECIPES: {
@@ -35,10 +34,11 @@ const todoReducer = (state = defaultState, action) => {
     }
 
     case ACTIONS.Types.DELETE_RECIPE: {
-      let newState = _.cloneDeep(state);
-      let index = _.findIndex(newState.recipes, { id: action.payload });
-      newState.recipes.splice(index, 1);
-      return newState;
+     return {
+       ...state,
+       recipes: state.recipes.filter(r => r.id !== action.payload.id)
+     }
+    
     }
 
     default:
