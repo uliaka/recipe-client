@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 function AddRecipePage(props) {
   const dispatch = useDispatch();
-  const goBack = () => props.history.goBack()
+  const goBack = () => props.history.goBack();
   const addRecipe = (recipe) => {
     return fetch(`http://localhost:3000/recipes/`, {
       method: 'POST',
@@ -15,13 +15,13 @@ function AddRecipePage(props) {
       headers: {
         'Content-type': 'application/json'
       }
-    })
-  }
+    });
+  };
   //add recipe action
   const onSuccess = (recipe) => {
-    dispatch({ type: types.CREATE_RECIPE, payload: recipe })
+    dispatch({ type: types.CREATE_RECIPE, payload: recipe });
     props.history.push('/');
-  }
+  };
   return (
     <>
       <IconButton aria-label="goBack" onClick={goBack}>
@@ -33,7 +33,7 @@ function AddRecipePage(props) {
         onSuccess={(data) => onSuccess(data)}
       />
     </>
-  )
+  );
 
 }
 

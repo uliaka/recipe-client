@@ -1,12 +1,12 @@
 import React from 'react';
-import moment from 'moment'
+import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
-import styles from '../styles/index.js'
+import styles from '../styles/index.js';
 
 const recipeItemStyles = {
   cardStyle: {
@@ -25,24 +25,24 @@ const recipeItemStyles = {
   subheader: {
     color: 'white'
   }
-}
+};
 
 const Recipe = (props) => {
   const goToRoute = (id) => {
     props.history.push(`recipe/details/${id}`, { id });
-  }
+  };
   const cardTitle = (
     <span>
       <span style={recipeItemStyles.cardTitle}>Title: </span>
       <span>{props.data.title}</span>
     </span>
-  )
+  );
 
   const subheader = (
     <span style={recipeItemStyles.subheader}>
       {`Created: ${moment(props.data.created).format('MMMM Do YYYY, h:mm:ss a')}`}
     </span>
-  ) 
+  ); 
 
   return (
     <Grid
@@ -64,6 +64,6 @@ const Recipe = (props) => {
       </Card>
     </Grid>
   );
-}
+};
 
 export default withRouter(Recipe);

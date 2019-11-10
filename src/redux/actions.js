@@ -1,7 +1,7 @@
-import Types from './types'
+import Types from './types';
   
 const createRecipe = recipe => dispatch => {
-  console.log("recipe", recipe)
+  console.log("recipe", recipe);
   fetch(`http://localhost:3000/recipes`, {
     method: 'POST',
     headers: {
@@ -14,9 +14,9 @@ const createRecipe = recipe => dispatch => {
     payload: recipe
   }))
   .catch(err => {
-      console.log(err)
-  })
-}
+      console.log(err);
+  });
+};
 
 const getRecipes = () => dispatch => {
   fetch(`http://localhost:3000/recipes`, {
@@ -33,11 +33,11 @@ const getRecipes = () => dispatch => {
    dispatch({
     type: Types.GET_RECIPES,
     payload: data,
-  })})
+  });})
   .catch(err => {
-      console.log(err)
-  })
-}
+      console.log(err);
+  });
+};
   
 const getRecipeById = (id) => dispatch => {
   fetch(`http://localhost:3000/recipes/${id}`, {
@@ -50,11 +50,11 @@ const getRecipeById = (id) => dispatch => {
   .then(res => { console.log("res", res.data);dispatch({
     type: Types.GET_RECIPE_BY_ID,
     payload: res.data,
-  })})
+  });})
   .catch(err => {
-      console.log(err)
-  })
-}
+      console.log(err);
+  });
+};
 
 const deleteRecipe = id => ({
   type: Types.DELETE_RECIPE,

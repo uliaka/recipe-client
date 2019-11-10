@@ -13,27 +13,27 @@ const RecipeForm = (props) => {
     const errors = {};
     const { type, title, ingredients, description, prepTime } = values;
     if (!type) {
-      errors.type = 'Type is required'
+      errors.type = 'Type is required';
     }
     if (!title) {
-      errors.title = 'Title is required'
+      errors.title = 'Title is required';
     }
     if (!ingredients) {
-      errors.ingredients = 'Ingredients is required'
+      errors.ingredients = 'Ingredients is required';
     }
     if (!prepTime) {
-      errors.prepTime = 'Preparation time is required'
+      errors.prepTime = 'Preparation time is required';
     } else if (!/^[0-9]{1,}$/i.test(prepTime)) {
       errors.prepTime = 'Preparation time should be number';
     }
     if (!description) {
-      errors.description = 'Description is required'
+      errors.description = 'Description is required';
     }
     return errors;
-  }
+  };
   const onFormSubmit = (values) => {
-    props.onSubmit(values)
-  }
+    props.onSubmit(values);
+  };
   const classes = useStyles();
 
   return (
@@ -136,8 +136,8 @@ const RecipeForm = (props) => {
         </CardContent>
       </Card>
     </Grid>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles({
   card: {

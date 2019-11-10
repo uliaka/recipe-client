@@ -24,7 +24,8 @@
     "test": "jest src/tests",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint src/**/**.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +50,7 @@
     "@storybook/react": "^5.2.5",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "react-addons-test-utils": "^15.6.2"

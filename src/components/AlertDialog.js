@@ -22,6 +22,6 @@ const AlertDialog = (props) => (
       </DialogActions>
     </Dialog>
     </>
-)
+);
 
-export default AlertDialog
+export default AlertDialog;

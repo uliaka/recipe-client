@@ -60,6 +60,6 @@ const RecipeDetails = (props) => (
       </CardContent>
     </Card>
   </Grid>
-)
+);
 
 export default RecipeDetails;

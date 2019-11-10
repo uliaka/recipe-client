@@ -8,7 +8,7 @@ const RecipeList = (props) => {
   const recipes = useSelector(state => state.recipes) || [];
   useEffect(() => {
     dispatch(ACTIONS.getRecipes());
-  }, [])
+  }, []);
   return (
     <>
       <div>
@@ -23,7 +23,7 @@ const RecipeList = (props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default RecipeList;
